@@ -8,7 +8,7 @@ import { routerConfig } from "./Constants/routerSettings";
 import CssBaseline from "@mui/material/CssBaseline";
 
 const PageLayout = styled("div")({
-    height: "100vh",
+    minHeight: "100vh",
     display: "grid",
     gridTemplateColumns: "1fr",
     gridTemplateRows: "auto 1fr auto",
@@ -18,7 +18,7 @@ const PageLayout = styled("div")({
 const Center = styled("div")({
     gridArea: "main",
     overflow: "auto",
-    padding: "10px 5px 10px 5px",
+    padding: "32px 0 64px",
 });
 
 function Layout() {
