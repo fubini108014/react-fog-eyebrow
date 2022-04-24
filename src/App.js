@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Outlet, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import { customTheme } from "./Constants/customTheme";
 import { ThemeProvider, styled } from "@mui/material/styles";
 import Footer from "./Components/Layout/Footer";
@@ -40,7 +40,7 @@ function Layout() {
 function App() {
     return (
         <ThemeProvider theme={customTheme}>
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />

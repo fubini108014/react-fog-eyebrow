@@ -1,5 +1,6 @@
 import React from "react";
 import { styled } from "@mui/material/styles";
+import { Link } from "react-router-dom";
 
 const HeaderContainer = styled("div")({
     marginTop: "20px",
@@ -10,7 +11,15 @@ const HeaderContainer = styled("div")({
 });
 
 function Header() {
-    return <HeaderContainer>Header</HeaderContainer>;
+    return (
+        <HeaderContainer>
+            <nav>
+                <Link to="/">Home</Link>
+                <Link to="/about">About</Link>
+                <Link to="/news">news</Link>
+            </nav>
+        </HeaderContainer>
+    );
 }
 
 export default Header;
