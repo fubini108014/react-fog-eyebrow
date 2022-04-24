@@ -4,12 +4,7 @@ import { ThemeProvider, styled } from "@mui/material/styles";
 import Footer from "./Components/Layout/Footer";
 import Header from "./Components/Layout/Header";
 import Home from "./Components/Page/Home";
-import News from "./Components/Page/News";
-import Portfolio from "./Components/Page/Portfolio";
-import Price from "./Components/Page/Price";
-import About from "./Components/Page/About";
-import Login from "./Components/Page/Login";
-import Question from "./Components/Page/Question";
+import { routerConfig } from "./Constants/routerSettings";
 
 const PageLayout = styled("div")({
     height: "100vh",
@@ -44,12 +39,13 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
-                        <Route path="news" element={<News />} />
-                        <Route path="portfolio" element={<Portfolio />} />
-                        <Route path="price" element={<Price />} />
-                        <Route path="about" element={<About />} />
-                        <Route path="login" element={<Login />} />
-                        <Route path="question" element={<Question />} />
+                        {routerConfig.map((page) => (
+                            <Route
+                                key={page.path}
+                                path={page.path}
+                                element={page.element}
+                            />
+                        ))}
                     </Route>
                     <Route path="*" element={<div>Page NotFound</div>} />
                 </Routes>
