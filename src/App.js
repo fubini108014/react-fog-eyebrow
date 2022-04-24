@@ -5,6 +5,7 @@ import Footer from "./Components/Layout/Footer";
 import Header from "./Components/Layout/Header";
 import Home from "./Components/Page/Home";
 import { routerConfig } from "./Constants/routerSettings";
+import CssBaseline from "@mui/material/CssBaseline";
 
 const PageLayout = styled("div")({
     height: "100vh",
@@ -35,6 +36,7 @@ function Layout() {
 function App() {
     return (
         <ThemeProvider theme={customTheme}>
+            <CssBaseline />
             <BrowserRouter basename={process.env.PUBLIC_URL}>
                 <Routes>
                     <Route path="/" element={<Layout />}>
