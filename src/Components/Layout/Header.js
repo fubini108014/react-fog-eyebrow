@@ -211,7 +211,10 @@ function Header() {
                     {portfolioMenu.map((type) => (
                         <MenuItem
                             key={`porKey_${type.value}`}
-                            onClick={() => navigate(type.path)}
+                            onClick={() => {
+                                navigate(type.path);
+                                handleClosePortfolioMenu();
+                            }}
                             className={"menuItem"}
                         >
                             <Typography textAlign="center">

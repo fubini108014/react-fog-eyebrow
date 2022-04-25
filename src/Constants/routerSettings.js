@@ -1,5 +1,5 @@
 import News from "../Components/Page/News";
-import Portfolio from "../Components/Page/Portfolio";
+import { Portfolio } from "../Components/Page/PortfolioPage/Portfolio";
 import Price from "../Components/Page/Price";
 import About from "../Components/Page/About";
 import Login from "../Components/Page/Login";

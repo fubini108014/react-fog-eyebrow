@@ -6,8 +6,10 @@ import Header from "./Components/Layout/Header";
 import Home from "./Components/Page/Home";
 import { routerConfig } from "./Constants/routerSettings";
 import CssBaseline from "@mui/material/CssBaseline";
+import PortfolioCloset from "./Components/Page/PortfolioPage/PortfolioCloset";
 
 const PageLayout = styled("div")({
+    height: "100vh",
     minHeight: "100vh",
     display: "grid",
     gridTemplateColumns: "1fr",
@@ -48,6 +50,10 @@ function App() {
                                 element={page.element}
                             />
                         ))}
+                        <Route
+                            path="portfolioCloset/:subType"
+                            element={<PortfolioCloset />}
+                        />
                     </Route>
                     <Route path="*" element={<div>Page NotFound</div>} />
                 </Routes>
