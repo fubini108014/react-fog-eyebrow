@@ -1,17 +1,21 @@
 {
   "files": {
-    "main.css": "/react-fog-eyebrow/static/css/main.456b4d21.css",
-    "main.js": "/react-fog-eyebrow/static/js/main.f1d426ac.js",
+    "main.css": "/react-fog-eyebrow/static/css/main.d1e993af.css",
+    "main.js": "/react-fog-eyebrow/static/js/main.75fb24e4.js",
     "static/js/787.63f41b73.chunk.js": "/react-fog-eyebrow/static/js/787.63f41b73.chunk.js",
+    "static/media/line_icon.svg": "/react-fog-eyebrow/static/media/line_icon.a54c944abcecba21a62af676f332cef7.svg",
+    "static/media/instagram_icon.svg": "/react-fog-eyebrow/static/media/instagram_icon.b248ea04f36aed9d7efd2820bbf77332.svg",
+    "static/media/photo-camera.svg": "/react-fog-eyebrow/static/media/photo-camera.7e743a63c0b993110784292ea04b42f2.svg",
     "static/media/logo.svg": "/react-fog-eyebrow/static/media/logo.ee9638cb576fd47fccacd9ffcf3a263b.svg",
     "static/media/arcticons_smartautoclicker.svg": "/react-fog-eyebrow/static/media/arcticons_smartautoclicker.8fb0c75f185b1b40ab164a9d38e55975.svg",
+    "static/media/facebook_icon.svg": "/react-fog-eyebrow/static/media/facebook_icon.a662e210834b399e040fcb3646c872be.svg",
     "index.html": "/react-fog-eyebrow/index.html",
-    "main.456b4d21.css.map": "/react-fog-eyebrow/static/css/main.456b4d21.css.map",
-    "main.f1d426ac.js.map": "/react-fog-eyebrow/static/js/main.f1d426ac.js.map",
+    "main.d1e993af.css.map": "/react-fog-eyebrow/static/css/main.d1e993af.css.map",
+    "main.75fb24e4.js.map": "/react-fog-eyebrow/static/js/main.75fb24e4.js.map",
     "787.63f41b73.chunk.js.map": "/react-fog-eyebrow/static/js/787.63f41b73.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.456b4d21.css",
-    "static/js/main.f1d426ac.js"
+    "static/css/main.d1e993af.css",
+    "static/js/main.75fb24e4.js"
   ]
 }
