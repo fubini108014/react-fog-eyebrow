@@ -48,10 +48,12 @@ const PortfolioMenu = styled(Menu)(({ theme }) => ({
         color: theme.custom.secondary.color,
         paddingTop: 0,
         paddingBottom: 0,
-
+        "& .menuItem:nth-child(n+2)": { borderTop: `1px solid #fff` },
         "& .menuItem": {
             height: 50,
-            border: `1px solid ${theme.custom.primary.color}`,
+            width: 120,
+            justifyContent: "center",
+
             "&:hover": {
                 backgroundColor: "#fff",
                 color: theme.custom.primary.color,
