@@ -3,16 +3,12 @@ import { useParams, useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import { Title, PortfolioCardContainer, fakeData } from "./Portfolio";
-import CustomPointer from "../../../Asset/Icon/arcticons_smartautoclicker.svg";
-import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogContentText from "@mui/material/DialogContentText";
-import DialogTitle from "@mui/material/DialogTitle";
 import CameraIcon from "../../../Asset/Icon/photo-camera.svg";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
+import SearchIcon from "@mui/icons-material/Search";
 
 const ClosetCard = styled("div")({
     width: "100%",
@@ -22,10 +18,17 @@ const ClosetCard = styled("div")({
     alignItems: "center",
     justifyContent: "center",
     flexDirection: "column",
-    cursor: `url(${CustomPointer}), auto`,
+    position: "relative",
     "& .cardTitle": {
         fontSize: "28px",
         margin: 6,
+    },
+    "& .searchBtn": {
+        background: "#fff",
+        position: "absolute",
+        top: 10,
+        right: 10,
+        transform: "rotateY(180deg)",
     },
 });
 const GoBackButton = styled("div")({
@@ -104,10 +107,14 @@ function PortfolioCloset() {
             <Title>{getPortfolioItem.title}</Title>
             <PortfolioCardContainer>
                 {fakeDataList.map((item, idx) => (
-                    <ClosetCard
-                        key={`PortCloset_key_${idx}`}
-                        onClick={handleClickOpen}
-                    >
+                    <ClosetCard key={`PortCloset_key_${idx}`}>
+                        <IconButton
+                            aria-label="search"
+                            onClick={handleClickOpen}
+                            className="searchBtn"
+                        >
+                            <SearchIcon sx={{ fontSize: 28 }} />
+                        </IconButton>
                         <div className="cardTitle">{item.title}</div>
                     </ClosetCard>
                 ))}

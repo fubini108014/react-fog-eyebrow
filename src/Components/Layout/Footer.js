@@ -8,6 +8,7 @@ import IGIcon from "../../Asset/Icon/instagram_icon.svg";
 
 const FooterContainer = styled("div")(({ theme }) => ({
     width: "100%",
+    height: "250px",
     padding: "25px 5%",
     background: theme.custom.primary.color,
     color: theme.custom.secondary.color,

@@ -10,27 +10,32 @@ import PortfolioCloset from "./Components/Page/PortfolioPage/PortfolioCloset";
 
 const PageLayout = styled("div")({
     height: "100vh",
-    minHeight: "100vh",
     display: "grid",
     gridTemplateColumns: "1fr",
-    gridTemplateRows: "auto 1fr auto",
-    gridTemplateAreas: ` 'header' 'main' 'footer'`,
+    gridTemplateRows: "auto 1fr",
+    gridTemplateAreas: ` 'header' 'main' `,
 });
 
 const Center = styled("div")({
+    padding: "32px 0px",
+    minHeight: "calc(100vh - 335px)",
+});
+
+const Main = styled("div")({
     gridArea: "main",
     overflow: "auto",
-    padding: "32px 0 64px",
 });
 
 function Layout() {
     return (
         <PageLayout>
             <Header />
-            <Center>
-                <Outlet />
-            </Center>
-            <Footer />
+            <Main>
+                <Center>
+                    <Outlet />
+                </Center>
+                <Footer />
+            </Main>
         </PageLayout>
     );
 }
