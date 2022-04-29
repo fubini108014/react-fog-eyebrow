@@ -2,13 +2,14 @@ import React, { useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
-import { Title, PortfolioCardContainer, fakeData } from "./Portfolio";
+import { PortfolioCardContainer, fakeData } from "./Portfolio";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import CameraIcon from "../../../Asset/Icon/photo-camera.svg";
 import CloseIcon from "@mui/icons-material/Close";
 import IconButton from "@mui/material/IconButton";
 import SearchIcon from "@mui/icons-material/Search";
+import Title from "../../Typography/Title";
 
 const ClosetCard = styled("div")({
     width: "100%",

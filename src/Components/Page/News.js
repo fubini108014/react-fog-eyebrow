@@ -1,7 +1,8 @@
 import React from "react";
+import Title from "../Typography/Title";
 
 function News() {
-    return <div>最新消息</div>;
+    return <Title>最新消息</Title>;
 }
 
 export default News;

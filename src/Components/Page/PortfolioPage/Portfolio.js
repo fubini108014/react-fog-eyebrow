@@ -4,12 +4,7 @@ import { portfolioMenu } from "../../../Constants/routerSettings";
 import { styled } from "@mui/material/styles";
 import Container from "@mui/material/Container";
 import CustomPointer from "../../../Asset/Icon/arcticons_smartautoclicker.svg";
-
-export const Title = styled("div")({
-    fontSize: "28px",
-    textAlign: "center",
-    margin: 20,
-});
+import Title from "../../Typography/Title";
 
 export const PortfolioCardContainer = styled("div")(({ theme }) => ({
     display: "grid",

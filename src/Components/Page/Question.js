@@ -1,7 +1,8 @@
 import React from "react";
+import Title from "../Typography/Title";
 
 function Question() {
-    return <div>常見問題</div>;
+    return <Title>常見問題</Title>;
 }
 
 export default Question;

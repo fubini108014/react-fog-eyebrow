@@ -48,7 +48,7 @@ const PortfolioMenu = styled(Menu)(({ theme }) => ({
         color: theme.custom.secondary.color,
         paddingTop: 0,
         paddingBottom: 0,
-        "& .menuItem:nth-child(n+2)": { borderTop: `1px solid #fff` },
+        "& .menuItem:nth-of-type(n+2)": { borderTop: `1px solid #fff` },
         "& .menuItem": {
             height: 50,
             width: 120,
