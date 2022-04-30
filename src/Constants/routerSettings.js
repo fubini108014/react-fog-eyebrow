@@ -1,4 +1,4 @@
-import News from "../Components/Page/News";
+import News from "../Components/Page/News/News";
 import { Portfolio } from "../Components/Page/PortfolioPage/Portfolio";
 import Price from "../Components/Page/Price";
 import About from "../Components/Page/About";
