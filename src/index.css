@@ -38,3 +38,10 @@ p {
     height: 0;
     overflow: hidden;
 }
+
+/* Home Page Swiper Button */
+/* 強制蓋過 左右輪播箭頭 預設樣式 */
+.swiper-button-next,
+.swiper-button-prev {
+    filter: brightness(0) invert(1);
+}
