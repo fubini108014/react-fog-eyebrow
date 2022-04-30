@@ -8,16 +8,15 @@ import IGIcon from "../../Asset/Icon/instagram_icon.svg";
 
 const FooterContainer = styled("div")(({ theme }) => ({
     width: "100%",
-    height: "250px",
     padding: "25px 5%",
     background: theme.custom.primary.color,
     color: theme.custom.secondary.color,
     gridArea: "footer",
     display: "flex",
     alignItems: "center",
-    flexDirection: {
-        xs: "column",
-        md: "row",
+    [theme.breakpoints.down("sm")]: {
+        flexDirection: "column",
+        gap: "2rem",
     },
 }));
 
@@ -25,6 +24,9 @@ const InfoList = styled("ul")(({ theme }) => ({
     color: theme.custom.secondary.color,
     lineHeight: "2",
     alignSelf: "flex-end",
+    [theme.breakpoints.down("md")]: {
+        alignSelf: "flex-start",
+    },
     "& li": {
         whiteSpace: "nowrap",
     },
@@ -41,10 +43,10 @@ function Footer() {
         <FooterContainer>
             <Box
                 sx={{
-                    flex: "6",
+                    flex: "3",
                     display: "flex",
                     justifyContent: "center",
-                    alignItems: "center",
+                    alignItems: { xs: "flex-start", md: "center" },
                     gap: "24px",
                     flexDirection: {
                         xs: "column",
@@ -69,7 +71,7 @@ function Footer() {
             </Box>
             <Box
                 sx={{
-                    flex: "4",
+                    flex: "2",
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
