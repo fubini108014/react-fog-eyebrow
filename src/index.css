@@ -18,6 +18,23 @@ ul {
     list-style: none;
 }
 
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
 p {
     margin: 0;
+}
+
+/* Question Page Animation */
+.active-answer {
+    transition: 0.5s;
+    height: auto;
+    padding: 1rem;
+}
+.close-answer {
+    transition: 0.5s;
+    height: 0;
+    overflow: hidden;
 }
