@@ -1,4 +1,10 @@
-import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+    Outlet,
+    Navigate,
+} from "react-router-dom";
 import { customTheme } from "./Constants/customTheme";
 import { ThemeProvider, styled } from "@mui/material/styles";
 import Footer from "./Components/Layout/Footer";
@@ -60,7 +66,8 @@ function App() {
                             element={<PortfolioCloset />}
                         />
                     </Route>
-                    <Route path="*" element={<div>Page NotFound</div>} />
+                    <Route path="/404" element={<div>Page NotFound</div>} />
+                    <Route path="*" element={<Navigate replace to="/404" />} />
                 </Routes>
             </BrowserRouter>
         </ThemeProvider>
