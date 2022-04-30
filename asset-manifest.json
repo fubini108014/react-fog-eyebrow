@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-fog-eyebrow/static/css/main.d1e993af.css",
-    "main.js": "/react-fog-eyebrow/static/js/main.553d5290.js",
+    "main.js": "/react-fog-eyebrow/static/js/main.6ea116d3.js",
     "static/js/787.63f41b73.chunk.js": "/react-fog-eyebrow/static/js/787.63f41b73.chunk.js",
     "static/media/headshot.png": "/react-fog-eyebrow/static/media/headshot.fc066b76fbad2d9992ed.png",
     "static/media/line_icon.svg": "/react-fog-eyebrow/static/media/line_icon.a54c944abcecba21a62af676f332cef7.svg",
@@ -12,11 +12,11 @@
     "index.html": "/react-fog-eyebrow/index.html",
     "static/media/facebook_icon.svg": "/react-fog-eyebrow/static/media/facebook_icon.a662e210834b399e040fcb3646c872be.svg",
     "main.d1e993af.css.map": "/react-fog-eyebrow/static/css/main.d1e993af.css.map",
-    "main.553d5290.js.map": "/react-fog-eyebrow/static/js/main.553d5290.js.map",
+    "main.6ea116d3.js.map": "/react-fog-eyebrow/static/js/main.6ea116d3.js.map",
     "787.63f41b73.chunk.js.map": "/react-fog-eyebrow/static/js/787.63f41b73.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.d1e993af.css",
-    "static/js/main.553d5290.js"
+    "static/js/main.6ea116d3.js"
   ]
 }
