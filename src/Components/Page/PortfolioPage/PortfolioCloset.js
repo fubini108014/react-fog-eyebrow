@@ -30,6 +30,9 @@ const ClosetCard = styled("div")({
         top: 10,
         right: 10,
         transform: "rotateY(180deg)",
+        "&:hover": {
+            backgroundColor: "rgba(255, 255, 255, .54)",
+        },
     },
 });
 const GoBackButton = styled("div")({

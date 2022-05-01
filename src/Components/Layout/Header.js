@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { routerConfig, portfolioMenu } from "../../Constants/routerSettings";
 import Logo from "../../Asset/Icon/logo.svg";
+import ReserveButton from "../Button/ReserveButton";
 
 const HeaderAppBar = styled(AppBar)(({ theme }) => ({
     marginTop: "25px",
@@ -19,7 +20,7 @@ const HeaderAppBar = styled(AppBar)(({ theme }) => ({
     background: theme.custom.primary.color,
     color: theme.custom.secondary.color,
     gridArea: "header",
-    position: "static",
+    position: "sticky",
     padding: "0 10px",
     "& .headerToolbar": {
         minHeight: "60px",
@@ -53,7 +54,6 @@ const PortfolioMenu = styled(Menu)(({ theme }) => ({
             height: 50,
             width: 120,
             justifyContent: "center",
-
             "&:hover": {
                 backgroundColor: "#fff",
                 color: theme.custom.primary.color,
@@ -102,8 +102,10 @@ function Header() {
                             backgroundRepeat: "no-repeat",
                             width: 100,
                             height: 50,
+                            cursor: "pointer",
                         },
                     }}
+                    onClick={() => navigate("/")}
                 />
 
                 <Box
@@ -167,7 +169,9 @@ function Header() {
                         backgroundRepeat: "no-repeat",
                         width: 100,
                         height: 50,
+                        cursor: "pointer",
                     }}
+                    onClick={() => navigate("/")}
                 />
                 <Box
                     sx={{
@@ -226,6 +230,7 @@ function Header() {
                     ))}
                 </PortfolioMenu>
             </Toolbar>
+            <ReserveButton />
         </HeaderAppBar>
     );
 }
