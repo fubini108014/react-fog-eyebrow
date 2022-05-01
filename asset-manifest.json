@@ -1,22 +1,25 @@
 {
   "files": {
-    "main.css": "/react-fog-eyebrow/static/css/main.c56ac7f3.css",
-    "main.js": "/react-fog-eyebrow/static/js/main.0a9e0db4.js",
+    "main.css": "/react-fog-eyebrow/static/css/main.efe78beb.css",
+    "main.js": "/react-fog-eyebrow/static/js/main.9611e1fe.js",
     "static/js/787.63f41b73.chunk.js": "/react-fog-eyebrow/static/js/787.63f41b73.chunk.js",
     "static/media/headshot.png": "/react-fog-eyebrow/static/media/headshot.fc066b76fbad2d9992ed.png",
     "static/media/line_icon.svg": "/react-fog-eyebrow/static/media/line_icon.a54c944abcecba21a62af676f332cef7.svg",
     "static/media/instagram_icon.svg": "/react-fog-eyebrow/static/media/instagram_icon.b248ea04f36aed9d7efd2820bbf77332.svg",
-    "static/media/photo-camera.svg": "/react-fog-eyebrow/static/media/photo-camera.822043bf2f27c8e82b9efe50a4dea7ba.svg",
+    "static/media/photo-camera.svg": "/react-fog-eyebrow/static/media/photo-camera.7e743a63c0b993110784292ea04b42f2.svg",
+    "static/media/eyebrow_icon.svg": "/react-fog-eyebrow/static/media/eyebrow_icon.fcbb913320d28bea1b8b3cfebc86b3e8.svg",
     "static/media/logo.svg": "/react-fog-eyebrow/static/media/logo.ee9638cb576fd47fccacd9ffcf3a263b.svg",
+    "static/media/lip_icon.svg": "/react-fog-eyebrow/static/media/lip_icon.fb00eb531eddfd19fcb80fe572276474.svg",
+    "static/media/eyeliner_icon.svg": "/react-fog-eyebrow/static/media/eyeliner_icon.93ce06f1ab42a911b458cf94e3431ee2.svg",
     "static/media/arcticons_smartautoclicker.svg": "/react-fog-eyebrow/static/media/arcticons_smartautoclicker.8fb0c75f185b1b40ab164a9d38e55975.svg",
     "index.html": "/react-fog-eyebrow/index.html",
     "static/media/facebook_icon.svg": "/react-fog-eyebrow/static/media/facebook_icon.a662e210834b399e040fcb3646c872be.svg",
-    "main.c56ac7f3.css.map": "/react-fog-eyebrow/static/css/main.c56ac7f3.css.map",
-    "main.0a9e0db4.js.map": "/react-fog-eyebrow/static/js/main.0a9e0db4.js.map",
+    "main.efe78beb.css.map": "/react-fog-eyebrow/static/css/main.efe78beb.css.map",
+    "main.9611e1fe.js.map": "/react-fog-eyebrow/static/js/main.9611e1fe.js.map",
     "787.63f41b73.chunk.js.map": "/react-fog-eyebrow/static/js/787.63f41b73.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c56ac7f3.css",
-    "static/js/main.0a9e0db4.js"
+    "static/css/main.efe78beb.css",
+    "static/js/main.9611e1fe.js"
   ]
 }
