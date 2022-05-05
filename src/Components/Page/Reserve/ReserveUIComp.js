@@ -34,15 +34,46 @@ export const Item = styled("div", {
 export const TimeSection = styled("div")(({ theme }) => ({
     display: "grid",
     gridAutoFlow: "row",
-    gridTemplateColumns: "55% 45%",
-    gridAutoRows: "400px",
+    gridTemplateColumns: "55% calc(45% - 15px)",
+    gridTemplateRows: "auto",
     gap: "15px",
-    [theme.breakpoints.down("sm")]: {
+    margin: "10px 0px 30px",
+    [theme.breakpoints.down("md")]: {
         gridTemplateColumns: "repeat(1, 1fr)",
     },
 }));
-export const DatePickerWrapper = styled("div")(({ theme }) => ({}));
-export const TimePickerWrapper = styled("div")(({ theme }) => ({}));
+
+export const DatePickerWrapper = styled("div")(({ theme }) => ({
+    minWidth: 320,
+    "& .customMuiPicker ": {
+        width: "100%",
+        "& > div:first-of-type": {
+            backgroundColor: theme.custom.primary.color,
+            position: "relative",
+            marginTop: 8,
+            marginRight: 8,
+            marginLeft: 8,
+            paddingLeft: 16,
+            paddingRight: 16,
+            minHeight: 36,
+            maxHeight: 36,
+            "& > div:first-of-type": {
+                position: "absolute",
+                left: "50%",
+                transform: "translateX(-50%)",
+                fontSize: "20px",
+            },
+            "& > div:nth-of-type(2)": {
+                width: "100%",
+                justifyContent: "space-between",
+            },
+        },
+    },
+}));
+
+export const TimePickerWrapper = styled("div")(({ theme }) => ({
+    minWidth: 320,
+}));
 
 export const Remark = styled("div")(({ theme }) => ({
     width: "100%",
@@ -56,6 +87,38 @@ export const SubItemWrapper = styled("div")(({ theme }) => ({
     margin: "10px",
     justifyContent: "space-between",
     alignItems: "center",
+
+    "& .subItemSwiper": {
+        userSelect: "none",
+        "& .swiper-slide": {
+            textAlign: "center",
+            margin: "auto",
+        },
+        "& .swiper-slide-next": {
+            fontSize: 28,
+        },
+    },
+    [theme.breakpoints.down("md")]: {
+        margin: "0px",
+        "& .subItemSwiper": {
+            "& .swiper-slide": {
+                fontSize: 16,
+            },
+            "& .swiper-slide-next": {
+                fontSize: 24,
+            },
+        },
+    },
+    [theme.breakpoints.down("sm")]: {
+        "& .subItemSwiper": {
+            "& .swiper-slide": {
+                fontSize: 14,
+            },
+            "& .swiper-slide-next": {
+                fontSize: 20,
+            },
+        },
+    },
 }));
 
 export const TimeItem = styled("div", {
@@ -75,6 +138,9 @@ export const TimeItem = styled("div", {
     letterSpacing: "3px",
     margin: "25px 10px",
     cursor: "pointer",
+    [theme.breakpoints.down("md")]: {
+        margin: "15px 0px",
+    },
 }));
 
 export const SubmitButton = styled("div")(({ theme }) => ({
@@ -92,5 +158,8 @@ export const SubmitButton = styled("div")(({ theme }) => ({
         background:
             "linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), #B7E6E4",
         color: "#fff",
+    },
+    [theme.breakpoints.down("md")]: {
+        margin: "20px 0px",
     },
 }));

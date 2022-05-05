@@ -1,13 +1,15 @@
-import React, { useState } from "react";
-import Container from "@mui/material/Container";
+import React, { useState, useRef } from "react";
+import { Box, Container, TextField } from "@mui/material";
 import Title from "../../Typography/Title";
-import TextField from "@mui/material/TextField";
 import LipIcon from "../../../Asset/Icon/lip_icon.svg";
 import EyeLinerIcon from "../../../Asset/Icon/eyeliner_icon.svg";
 import EyeBrowIcon from "../../../Asset/Icon/eyebrow_icon.svg";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
+//import isWeekend from "date-fns/isWeekend";
+import { isWeekend, addDays } from "date-fns";
+import locale from "date-fns/locale/zh-TW";
 import {
     SubTitle,
     ItemList,
@@ -21,6 +23,8 @@ import {
     SubItemWrapper,
 } from "./ReserveUIComp";
 import ArrowButton from "../../Button/ArrowButton";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper";
 
 const itemSource = [
     { text: "霧眉", value: "a", icon: EyeBrowIcon },
@@ -39,15 +43,16 @@ function Reserve() {
         dateTime: new Date("2014-08-18T21:11:54"),
         timeInterval: "",
     });
-
-    const handleClickTypeSelected = (value) => {};
+    const swiperRef = useRef(null);
     const [value, setValue] = React.useState(null);
+    /*const handleClickTypeSelected = (value) => {};
     const handleChangeDate = (newValue) => {
         setSelection({ ...selection, dateTime: newValue });
-    };
+    };*/
 
     const disableWeekends = (day) => {
-        return day.getDay() === 0 || day.getDay() === 6;
+        return isWeekend(day);
+        //return day.getDay() === 0 || day.getDay() === 6 || ;
     };
 
     return (
@@ -55,8 +60,9 @@ function Reserve() {
             <Title>立即預約</Title>
             <SubTitle>(1) 請先選項目</SubTitle>
             <ItemList>
-                {itemSource.map((item) => (
+                {itemSource.map((item, idx) => (
                     <Item
+                        key={"ItemKey_" + idx}
                         active={selection.type === item.value}
                         onClick={() =>
                             setSelection({ ...selection, type: item.value })
@@ -74,7 +80,10 @@ function Reserve() {
             <SubTitle>(2) 選擇時間和小項目</SubTitle>
             <TimeSection>
                 <DatePickerWrapper>
-                    <LocalizationProvider dateAdapter={AdapterDateFns}>
+                    <LocalizationProvider
+                        dateAdapter={AdapterDateFns}
+                        locale={locale}
+                    >
                         <StaticDatePicker
                             displayStaticWrapperAs="desktop"
                             openTo="day"
@@ -82,20 +91,55 @@ function Reserve() {
                             onChange={(newValue) => {
                                 setValue(newValue);
                             }}
-                            renderInput={(params) => <TextField {...params} />}
+                            className="customStaticWrapper"
+                            classes={{ root: "customMuiPicker" }}
+                            views={["day"]}
+                            minDate={new Date()}
+                            maxDate={addDays(new Date(), 60)}
+                            // orientation="landscape"
+                            renderInput={(params) => (
+                                <TextField {...params} fullWidth />
+                            )}
                             shouldDisableDate={disableWeekends}
                         />
                     </LocalizationProvider>
                 </DatePickerWrapper>
                 <TimePickerWrapper>
                     <SubItemWrapper>
-                        <ArrowButton onClick={() => {}} direction="left" />
-                        {"韓系霧眉 法式霧眉 傳統霧眉"}
-                        <ArrowButton onClick={() => {}} direction="right" />
+                        <ArrowButton
+                            onClick={() => swiperRef.current.swiper.slidePrev()}
+                            direction="left"
+                        />
+                        <Swiper
+                            slidesPerView={3}
+                            spaceBetween={5}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            loop={true}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 30,
+                                },
+                            }}
+                            modules={[Pagination]}
+                            className="subItemSwiper"
+                            ref={swiperRef}
+                        >
+                            <SwiperSlide>韓系霧眉</SwiperSlide>
+                            <SwiperSlide>法式霧眉</SwiperSlide>
+                            <SwiperSlide>傳統霧眉</SwiperSlide>
+                        </Swiper>
+                        <ArrowButton
+                            onClick={() => swiperRef.current.swiper.slideNext()}
+                            direction="right"
+                        />
                     </SubItemWrapper>
                     <Remark>請選擇您要的預約時間</Remark>
                     {fakeTimeDataSource.map((item) => (
                         <TimeItem
+                            key={`key_${item.value}`}
                             active={selection.timeInterval === item.value}
                             onClick={() =>
                                 setSelection({

@@ -23,4 +23,25 @@ export const customTheme = createTheme({
             color4: "#DF4F4F",
         },
     },
+    components: {
+        MuiPickerStaticWrapper: {
+            styleOverrides: {
+                // Name of the slot
+                root: {
+                    // Some CSS
+                    border: "1px solid #9B9B9B",
+                    "& > div:first-of-type,& > div > div:first-of-type": {
+                        width: "100%",
+                    },
+                    "& .PrivatePickersFadeTransitionGroup-root > div > div:first-of-type,& .PrivatePickersSlideTransition-root > div > div ":
+                        {
+                            justifyContent: "space-around",
+                            "& button,& span": {
+                                fontSize: "18px !important;",
+                            },
+                        },
+                },
+            },
+        },
+    },
 });
