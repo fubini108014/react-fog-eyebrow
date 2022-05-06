@@ -35,13 +35,13 @@ const ClosetCard = styled("div")({
         },
     },
 });
-const GoBackButton = styled("div")({
+const GoBackButton = styled("div")(({ theme }) => ({
     width: "120px",
     height: "35px",
     fontSize: "16px",
     cursor: "pointer",
     position: "absolute",
-    backgroundColor: "#FFF4F5",
+    backgroundColor: theme.custom.primary.color3,
     borderRadius: 25,
     color: "#777777",
     top: 5,
@@ -57,9 +57,9 @@ const GoBackButton = styled("div")({
         transform: "rotate(135deg)",
     },
     "&:hover": {
-        backgroundColor: "#FEDFE1",
+        backgroundColor: theme.custom.primary.color2,
     },
-});
+}));
 const PictureDialog = styled(Dialog)({
     "& .closeBtn": {
         position: "absolute",

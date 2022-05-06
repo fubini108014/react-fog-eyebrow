@@ -7,8 +7,8 @@ import EyeBrowIcon from "../../../Asset/Icon/eyebrow_icon.svg";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
-//import isWeekend from "date-fns/isWeekend";
-import { isWeekend, addDays } from "date-fns";
+import { PickersDay, pickersDayClasses } from "@mui/x-date-pickers";
+import { isWeekend, addDays, isSameDay } from "date-fns";
 import locale from "date-fns/locale/zh-TW";
 import {
     SubTitle,
@@ -21,6 +21,9 @@ import {
     Remark,
     TimeItem,
     SubItemWrapper,
+    CalendarRemark,
+    GreenBox,
+    RedBox,
 } from "./ReserveUIComp";
 import ArrowButton from "../../Button/ArrowButton";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -35,6 +38,44 @@ const fakeTimeDataSource = [
     { text: "10:00 AM", value: "1" },
     { text: "15:00 PM", value: "2" },
 ];
+
+const highlightedDays = [
+    {
+        //已額滿
+        date: addDays(new Date(), 9),
+        styles: {
+            backgroundColor: "purple",
+            color: "white",
+        },
+    },
+    {
+        //尚有時間
+        date: addDays(new Date(), 12),
+        styles: {
+            color: "red",
+            fontWeight: "bold",
+            fontSize: 18,
+            textDecoration: "underline",
+        },
+    },
+];
+const renderWeekPickerDay = (date, selectedDates, pickersDayProps) => {
+    const matchedStyles = highlightedDays.reduce((a, v) => {
+        return isSameDay(date, v.date) ? v.styles : a;
+    }, {});
+
+    return (
+        <PickersDay
+            {...pickersDayProps}
+            sx={{
+                ...matchedStyles,
+                [`&&.${pickersDayClasses.selected}`]: {
+                    backgroundColor: "green",
+                },
+            }}
+        />
+    );
+};
 
 function Reserve() {
     const [selection, setSelection] = useState({
@@ -100,9 +141,16 @@ function Reserve() {
                             renderInput={(params) => (
                                 <TextField {...params} fullWidth />
                             )}
+                            renderDay={renderWeekPickerDay}
                             shouldDisableDate={disableWeekends}
                         />
                     </LocalizationProvider>
+                    <CalendarRemark>
+                        <RedBox />
+                        <div>已額滿</div>
+                        <GreenBox />
+                        <div>尚有時間</div>
+                    </CalendarRemark>
                 </DatePickerWrapper>
                 <TimePickerWrapper>
                     <SubItemWrapper>

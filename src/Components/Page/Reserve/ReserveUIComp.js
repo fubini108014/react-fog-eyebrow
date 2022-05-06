@@ -45,18 +45,19 @@ export const TimeSection = styled("div")(({ theme }) => ({
 
 export const DatePickerWrapper = styled("div")(({ theme }) => ({
     minWidth: 320,
+    position: "relative",
     "& .customMuiPicker ": {
         width: "100%",
         "& > div:first-of-type": {
             backgroundColor: theme.custom.primary.color,
             position: "relative",
-            marginTop: 8,
-            marginRight: 8,
-            marginLeft: 8,
+            marginTop: 6,
+            marginRight: 6,
+            marginLeft: 6,
             paddingLeft: 16,
             paddingRight: 16,
-            minHeight: 36,
-            maxHeight: 36,
+            minHeight: 40,
+            maxHeight: 40,
             "& > div:first-of-type": {
                 position: "absolute",
                 left: "50%",
@@ -73,6 +74,31 @@ export const DatePickerWrapper = styled("div")(({ theme }) => ({
 
 export const TimePickerWrapper = styled("div")(({ theme }) => ({
     minWidth: 320,
+}));
+
+export const CalendarRemark = styled("div")(({ theme }) => ({
+    display: "flex",
+    alignItems: "center",
+    position: "absolute",
+    bottom: "15px",
+    left: "30px",
+}));
+
+export const RedBox = styled("div")(({ theme }) => ({
+    width: 30,
+    height: 15,
+    borderRadius: "5px",
+    marginRight: "5px",
+    backgroundColor: theme.custom.primary.color2,
+}));
+
+export const GreenBox = styled("div")(({ theme }) => ({
+    width: 30,
+    height: 15,
+    borderRadius: "5px",
+    marginLeft: "15px",
+    marginRight: "5px",
+    backgroundColor: theme.custom.primary.color,
 }));
 
 export const Remark = styled("div")(({ theme }) => ({
