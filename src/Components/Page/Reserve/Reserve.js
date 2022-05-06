@@ -1,5 +1,5 @@
-import React, { useState, useRef } from "react";
-import { Box, Container, TextField } from "@mui/material";
+import React, { useState, useRef, useEffect } from "react";
+import { Container, TextField } from "@mui/material";
 import Title from "../../Typography/Title";
 import LipIcon from "../../../Asset/Icon/lip_icon.svg";
 import EyeLinerIcon from "../../../Asset/Icon/eyeliner_icon.svg";
@@ -7,7 +7,6 @@ import EyeBrowIcon from "../../../Asset/Icon/eyebrow_icon.svg";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { StaticDatePicker } from "@mui/x-date-pickers/StaticDatePicker";
-import { PickersDay, pickersDayClasses } from "@mui/x-date-pickers";
 import { isWeekend, addDays, isSameDay } from "date-fns";
 import locale from "date-fns/locale/zh-TW";
 import {
@@ -23,6 +22,7 @@ import {
     SubItemWrapper,
     CalendarRemark,
     GreenBox,
+    CustomPickersDay,
     RedBox,
 } from "./ReserveUIComp";
 import ArrowButton from "../../Button/ArrowButton";
@@ -38,64 +38,68 @@ const fakeTimeDataSource = [
     { text: "10:00 AM", value: "1" },
     { text: "15:00 PM", value: "2" },
 ];
+const today = new Date();
+const disableWeekends = (day) => {
+    return isWeekend(day);
+    //return day.getDay() === 0 || day.getDay() === 6 || ;
+};
 
-const highlightedDays = [
-    {
-        //已額滿
-        date: addDays(new Date(), 9),
-        styles: {
-            backgroundColor: "purple",
-            color: "white",
-        },
-    },
-    {
-        //尚有時間
-        date: addDays(new Date(), 12),
-        styles: {
-            color: "red",
-            fontWeight: "bold",
-            fontSize: 18,
-            textDecoration: "underline",
-        },
-    },
-];
+const alreadyFullDate = [addDays(today, 12), addDays(today, 10)];
+
 const renderWeekPickerDay = (date, selectedDates, pickersDayProps) => {
-    const matchedStyles = highlightedDays.reduce((a, v) => {
-        return isSameDay(date, v.date) ? v.styles : a;
-    }, {});
+    let givenClassName = "";
+    if (!pickersDayProps.disabled && !pickersDayProps.today) {
+        givenClassName = alreadyFullDate.some((fullDay) =>
+            isSameDay(fullDay, date)
+        )
+            ? "alreadyfullDays"
+            : "notFullDays";
+    }
 
-    return (
-        <PickersDay
-            {...pickersDayProps}
-            sx={{
-                ...matchedStyles,
-                [`&&.${pickersDayClasses.selected}`]: {
-                    backgroundColor: "green",
-                },
-            }}
-        />
-    );
+    return <CustomPickersDay {...pickersDayProps} className={givenClassName} />;
 };
 
 function Reserve() {
     const [selection, setSelection] = useState({
         type: "",
         subType: "",
-        dateTime: new Date("2014-08-18T21:11:54"),
+        dateTime: null,
         timeInterval: "",
     });
     const swiperRef = useRef(null);
-    const [value, setValue] = React.useState(null);
-    /*const handleClickTypeSelected = (value) => {};
-    const handleChangeDate = (newValue) => {
-        setSelection({ ...selection, dateTime: newValue });
-    };*/
 
-    const disableWeekends = (day) => {
-        return isWeekend(day);
-        //return day.getDay() === 0 || day.getDay() === 6 || ;
+    const handleClickTypeSelected = (value) => {
+        //TODO: get new subType and rerender <ItemList/>
+        setSelection({ ...selection, type: value, subType: "" });
     };
 
+    const handleChangeDate = (newValue) => {
+        //TODO: get new TimeInterval and rerender <TimeItem/>
+        setSelection({ ...selection, dateTime: newValue, timeInterval: "" });
+    };
+
+    const handleChangeSubType = (dir) => {
+        if (dir === "next") {
+            swiperRef.current.swiper.slideNext();
+        } else {
+            swiperRef.current.swiper.slidePrev();
+        }
+        const getActiveIndex = swiperRef.current.swiper.activeIndex;
+
+        setSelection({
+            ...selection,
+            subType:
+                swiperRef.current.swiper.slides[getActiveIndex].dataset.value,
+        });
+    };
+
+    const handleClickSubmit = () => {
+        console.log("Submit!!!");
+    };
+
+    useEffect(() => {
+        console.log("selection : ", selection);
+    }, [selection]);
     return (
         <Container>
             <Title>立即預約</Title>
@@ -105,9 +109,7 @@ function Reserve() {
                     <Item
                         key={"ItemKey_" + idx}
                         active={selection.type === item.value}
-                        onClick={() =>
-                            setSelection({ ...selection, type: item.value })
-                        }
+                        onClick={() => handleClickTypeSelected(item.value)}
                     >
                         <img
                             src={item.icon}
@@ -128,15 +130,13 @@ function Reserve() {
                         <StaticDatePicker
                             displayStaticWrapperAs="desktop"
                             openTo="day"
-                            value={value}
-                            onChange={(newValue) => {
-                                setValue(newValue);
-                            }}
+                            value={selection.dateTime}
+                            onChange={handleChangeDate}
                             className="customStaticWrapper"
                             classes={{ root: "customMuiPicker" }}
                             views={["day"]}
-                            minDate={new Date()}
-                            maxDate={addDays(new Date(), 60)}
+                            minDate={today}
+                            maxDate={addDays(today, 60)}
                             // orientation="landscape"
                             renderInput={(params) => (
                                 <TextField {...params} fullWidth />
@@ -155,7 +155,7 @@ function Reserve() {
                 <TimePickerWrapper>
                     <SubItemWrapper>
                         <ArrowButton
-                            onClick={() => swiperRef.current.swiper.slidePrev()}
+                            onClick={() => handleChangeSubType("prev")}
                             direction="left"
                         />
                         <Swiper
@@ -175,12 +175,12 @@ function Reserve() {
                             className="subItemSwiper"
                             ref={swiperRef}
                         >
-                            <SwiperSlide>韓系霧眉</SwiperSlide>
-                            <SwiperSlide>法式霧眉</SwiperSlide>
-                            <SwiperSlide>傳統霧眉</SwiperSlide>
+                            <SwiperSlide data-value="1">韓系霧眉</SwiperSlide>
+                            <SwiperSlide data-value="2">法式霧眉</SwiperSlide>
+                            <SwiperSlide data-value="3">傳統霧眉</SwiperSlide>
                         </Swiper>
                         <ArrowButton
-                            onClick={() => swiperRef.current.swiper.slideNext()}
+                            onClick={() => handleChangeSubType("next")}
                             direction="right"
                         />
                     </SubItemWrapper>
@@ -200,7 +200,9 @@ function Reserve() {
                         </TimeItem>
                     ))}
 
-                    <SubmitButton>立即預約</SubmitButton>
+                    <SubmitButton onClick={handleClickSubmit}>
+                        立即預約
+                    </SubmitButton>
                 </TimePickerWrapper>
             </TimeSection>
         </Container>

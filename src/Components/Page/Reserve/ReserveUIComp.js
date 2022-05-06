@@ -1,4 +1,6 @@
 import { styled } from "@mui/material/styles";
+import { PickersDay } from "@mui/x-date-pickers";
+
 export const SubTitle = styled("div")(({ theme }) => ({
     fontSize: 30,
 }));
@@ -45,7 +47,9 @@ export const TimeSection = styled("div")(({ theme }) => ({
 
 export const DatePickerWrapper = styled("div")(({ theme }) => ({
     minWidth: 320,
+
     position: "relative",
+    "& > div:first-of-type > div:first-of-type": { height: "400px" },
     "& .customMuiPicker ": {
         width: "100%",
         "& > div:first-of-type": {
@@ -187,5 +191,21 @@ export const SubmitButton = styled("div")(({ theme }) => ({
     },
     [theme.breakpoints.down("md")]: {
         margin: "20px 0px",
+    },
+}));
+
+export const CustomPickersDay = styled(PickersDay)(({ theme }) => ({
+    borderRadius: 5,
+    margin: 2,
+    color: "rgba(0, 0, 0, 0.87)",
+    "&.Mui-selected,&:focus.Mui-selected,&:hover.Mui-selected": {
+        backgroundColor: "#678280 !important",
+    },
+    "&.notFullDays": {
+        backgroundColor: theme.custom.primary.color,
+    },
+    "&.alreadyfullDays": {
+        pointerEvents: "none",
+        backgroundColor: theme.custom.primary.color2,
     },
 }));
