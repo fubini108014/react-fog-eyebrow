@@ -16,11 +16,18 @@ const Headshot = styled("div")(({ theme }) => ({
     margin: "10px",
     "& .headshotTitle": {
         margin: "5px 0px",
+        fontSize: "24px",
+        "& .suggestion": {
+            color: theme.custom.typography.color4,
+            fontSize: "16px",
+        },
     },
     "& img": {
         width: "300px",
         height: "300px",
         background: "#C4C4C4",
+        lineHeight: "300px",
+        textAlign: "center",
     },
 }));
 
@@ -36,16 +43,20 @@ const EditorContainer = styled("div")(({ theme }) => ({
 
 function About() {
     const fileRef = useRef(null);
-    const editorRef = useRef(null);
     const [editorText, setEditorText] = useState("");
+    const [imgSrc, setImgSrc] = useState("");
 
     const handleChangeText = (text) => {
         setEditorText(text);
     };
 
+    const handleChangeImage = (files) => {
+        setImgSrc(URL.createObjectURL(files));
+    };
+
     const submit = () => {
         console.log("file: ", fileRef.current?.files[0]);
-        console.log("editorText: ", editorRef.current?.value);
+        console.log("editorText: ", editorText);
     };
 
     return (
@@ -54,16 +65,21 @@ function About() {
             <AboutWrapper>
                 <Headshot>
                     <div className="headshotTitle">
-                        個人照 建議尺寸400*600px
+                        個人照{" "}
+                        <span className="suggestion">建議尺寸400*600px</span>
                     </div>
-                    <img alt="大頭照" />
-                    <UploadField text="選擇檔案" inputRef={fileRef} />
+                    <img id="" alt="請上傳圖片" src={imgSrc} />
+                    <UploadField
+                        text="選擇檔案"
+                        inputRef={fileRef}
+                        inputProps={{ accept: " image/*" }}
+                        inputOnChange={handleChangeImage}
+                    />
                 </Headshot>
                 <EditorContainer>
                     <QuillEditor
                         onChange={handleChangeText}
                         value={editorText}
-                        editorRef={editorRef}
                     />
                     <Button
                         variant="contained"

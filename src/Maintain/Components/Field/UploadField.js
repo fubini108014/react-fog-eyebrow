@@ -16,15 +16,30 @@ const UploadFieldWrapper = styled("div")(({ theme }) => ({
         },
     },
 
-    "& .fileName": { margin: 5, color: "#000" },
+    "& .fileName": {
+        margin: 5,
+        color: "#000",
+        whiteSpace: "nowrap",
+        overflow: "hidden",
+        textOverflow: "ellipsis",
+        maxWidth: "200px",
+    },
 }));
 
-export const UploadField = ({ text = "", inputRef, defaultFileName = "" }) => {
+export const UploadField = ({
+    text = "",
+    inputRef,
+    defaultFileName = "未上傳任何檔案",
+    inputProps,
+    inputOnChange,
+}) => {
     const [fileName, setFileName] = useState(defaultFileName);
 
     const handleChangeFile = () => {
-        const getLink = inputRef?.current?.files[0].name || "";
+        const files = inputRef?.current?.files[0];
+        const getLink = files.name || "";
         setFileName(getLink);
+        inputOnChange(files);
     };
 
     return (
@@ -39,14 +54,14 @@ export const UploadField = ({ text = "", inputRef, defaultFileName = "" }) => {
                             type="file"
                             ref={inputRef}
                             onChange={handleChangeFile}
+                            {...inputProps}
                         />
 
                         {text}
                     </label>
                 </Button>
             </div>
-
-            <div className={"fileName"}>{fileName}</div>
+            <div className="fileName">{fileName}</div>
         </UploadFieldWrapper>
     );
 };

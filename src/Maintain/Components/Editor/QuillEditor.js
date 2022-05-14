@@ -55,6 +55,7 @@ const AboutWrapper = styled("div")(({ theme }) => ({
     flex: 1,
     "& .quillTitle": {
         margin: "5px 0",
+        fontSize: "24px",
     },
     "& .quill-editor": {
         boxShadow: "rgb(0 0 0 / 13%) 0px 2px 4px 0px",
