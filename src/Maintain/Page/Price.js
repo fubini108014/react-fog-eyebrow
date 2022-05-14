@@ -1,12 +1,12 @@
 import React from "react";
 import Title from "../Components/Typography/Title";
 
-function Portfolio() {
+function Price() {
     return (
         <div>
-            <Title>作品集</Title>
+            <Title>價目表</Title>
         </div>
     );
 }
 
-export default Portfolio;
+export default Price;

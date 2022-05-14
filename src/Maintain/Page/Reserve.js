@@ -1,7 +1,12 @@
 import React from "react";
+import Title from "../Components/Typography/Title";
 
 function Reserve() {
-    return <div>Reserve</div>;
+    return (
+        <div>
+            <Title>預約管理</Title>
+        </div>
+    );
 }
 
 export default Reserve;

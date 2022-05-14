@@ -21,8 +21,9 @@ const CustomTab = styled(Tab)(({ theme }) => ({
 function Sidebar() {
     let navigate = useNavigate();
     let location = useLocation();
+
     const defaultTabIdx = maintainRouterConfig.findIndex(
-        (item) => location.pathname.indexOf(item.path) > -1
+        (item) => location.pathname.indexOf("/" + item.path) > -1
     );
 
     const [value, setValue] = React.useState(

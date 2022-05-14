@@ -3,7 +3,7 @@ import About from "../Maintain/Page/About";
 import Banner from "../Maintain/Page/Banner";
 import News from "../Maintain/Page/News";
 import Portfolio from "../Maintain/Page/Portfolio";
-import Question from "../Maintain/Page/Question";
+import Price from "../Maintain/Page/Price";
 import Reserve from "../Maintain/Page/Reserve";
 
 export const maintainRouterConfig = [
@@ -30,9 +30,9 @@ export const maintainRouterConfig = [
     },
 
     {
-        path: "question",
-        element: <Question />,
-        name: "常見問題",
+        path: "price",
+        element: <Price />,
+        name: "價目表",
         icon: <PhoneIcon />,
     },
 ];

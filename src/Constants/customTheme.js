@@ -21,6 +21,7 @@ export const customTheme = createTheme({
             color2: "#777777",
             color3: "#b3b3b3",
             color4: "#DF4F4F",
+            color5: "#ACC8C7", //title
         },
     },
     components: {
