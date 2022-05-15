@@ -16,6 +16,7 @@ const PageLayout = styled("div")({
 
 const Main = styled("div")({
     height: "100%",
+    overflow: "auto",
     flex: 1,
 });
 const LogoutButton = styled("button")({

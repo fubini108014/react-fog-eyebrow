@@ -5,8 +5,15 @@ import News from "../Maintain/Page/News";
 import Portfolio from "../Maintain/Page/Portfolio";
 import Price from "../Maintain/Page/Price";
 import Reserve from "../Maintain/Page/Reserve";
+import Home from "../Maintain/Page/Home";
 
 export const maintainRouterConfig = [
+    {
+        path: "home",
+        element: <Home />,
+        name: "首頁",
+        icon: <PhoneIcon />,
+    },
     { path: "about", element: <About />, name: "關於我", icon: <PhoneIcon /> },
     { path: "news", element: <News />, name: "最新消息", icon: <PhoneIcon /> },
     {
