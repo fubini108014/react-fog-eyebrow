@@ -14,6 +14,7 @@ import { routerConfig } from "./Constants/routerSettings";
 import CssBaseline from "@mui/material/CssBaseline";
 import PortfolioCloset from "./Components/Page/PortfolioPage/PortfolioCloset";
 import Reserve from "./Components/Page/Reserve/Reserve";
+import MaintainApp from "./Maintain/MaintainApp";
 
 const PageLayout = styled("div")({
     height: "100vh",
@@ -70,6 +71,7 @@ function App() {
                         />
                         <Route path="reserve" element={<Reserve />} />
                     </Route>
+                    <Route path="/maintain/*" element={<MaintainApp />} />
                     <Route path="/404" element={<div>Page NotFound</div>} />
                     <Route path="*" element={<Navigate replace to="/404" />} />
                 </Routes>
