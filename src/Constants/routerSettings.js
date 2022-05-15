@@ -5,6 +5,7 @@ import Price from "../Components/Page/Price";
 import About from "../Components/Page/About";
 import Login from "../Components/Page/Login";
 import Question from "../Components/Page/Question";
+import PortfolioCloset from "../Components/Page/PortfolioPage/PortfolioCloset";
 
 export const routerConfig = [
     {
@@ -24,6 +25,12 @@ export const routerConfig = [
         element: <Portfolio />,
         name: "作品集",
         isMain: true,
+    },
+    {
+        path: "portfolioCloset/:subType",
+        element: <PortfolioCloset />,
+        name: "作品集內頁",
+        isMain: false,
     },
     { path: "price", element: <Price />, name: "價目表", isMain: true },
     { path: "about", element: <About />, name: "關於我", isMain: true },

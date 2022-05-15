@@ -12,7 +12,6 @@ import Header from "./Components/Layout/Header";
 import Home from "./Components/Page/Home";
 import { routerConfig } from "./Constants/routerSettings";
 import CssBaseline from "@mui/material/CssBaseline";
-import PortfolioCloset from "./Components/Page/PortfolioPage/PortfolioCloset";
 import Reserve from "./Components/Page/Reserve/Reserve";
 import MaintainApp from "./Maintain/MaintainApp";
 
@@ -65,10 +64,7 @@ function App() {
                                 />
                             );
                         })}
-                        <Route
-                            path="portfolioCloset/:subType"
-                            element={<PortfolioCloset />}
-                        />
+
                         <Route path="reserve" element={<Reserve />} />
                     </Route>
                     <Route path="/maintain/*" element={<MaintainApp />} />
