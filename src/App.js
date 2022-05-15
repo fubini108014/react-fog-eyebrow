@@ -55,13 +55,15 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Layout />}>
                         <Route index element={<Home />} />
-                        {routerConfig.map((page) => (
-                            <Route
-                                key={page.path}
-                                path={page.path}
-                                element={page.element}
-                            />
-                        ))}
+                        {routerConfig.map((page) => {
+                            return (
+                                <Route
+                                    key={page.path}
+                                    path={page.path}
+                                    element={page.element}
+                                />
+                            );
+                        })}
                         <Route
                             path="portfolioCloset/:subType"
                             element={<PortfolioCloset />}

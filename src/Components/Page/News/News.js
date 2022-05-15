@@ -21,7 +21,7 @@ function News() {
             <NewsList>
                 {data?.map((itm, idx) => (
                     <Link
-                        to={itm.id}
+                        to={`/news/detail/${itm.id}`}
                         key={idx}
                         style={{ color: "#000", cursor: "pointer" }}
                     >

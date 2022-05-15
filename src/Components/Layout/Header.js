@@ -183,19 +183,22 @@ function Header() {
                         },
                     }}
                 >
-                    {routerConfig.map((page) => (
-                        <Button
-                            key={page.path}
-                            onClick={(e) => handleGoPage(e, page.path)}
-                            className="menuButton"
-                            sx={{
-                                my: 2,
-                                display: "block",
-                            }}
-                        >
-                            {page.name}
-                        </Button>
-                    ))}
+                    {routerConfig.map((page) => {
+                        if (!page.isMain) return;
+                        return (
+                            <Button
+                                key={page.path}
+                                onClick={(e) => handleGoPage(e, page.path)}
+                                className="menuButton"
+                                sx={{
+                                    my: 2,
+                                    display: "block",
+                                }}
+                            >
+                                {page.name}
+                            </Button>
+                        );
+                    })}
                 </Box>
                 <PortfolioMenu
                     sx={{ mt: "45px" }}
