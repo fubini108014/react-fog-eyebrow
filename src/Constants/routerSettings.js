@@ -6,6 +6,7 @@ import About from "../Components/Page/About";
 import Login from "../Components/Page/Login";
 import Question from "../Components/Page/Question";
 import PortfolioCloset from "../Components/Page/PortfolioPage/PortfolioCloset";
+import Reserve from "../Components/Page/Reserve/Reserve";
 
 export const routerConfig = [
     {
@@ -36,6 +37,7 @@ export const routerConfig = [
     { path: "about", element: <About />, name: "關於我", isMain: true },
     { path: "login", element: <Login />, name: "註冊｜登入", isMain: true },
     { path: "question", element: <Question />, name: "常見問題", isMain: true },
+    { path: "reserve", element: <Reserve />, name: "預約", isMain: false },
 ];
 
 export const portfolioMenu = [

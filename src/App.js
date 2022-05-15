@@ -12,7 +12,6 @@ import Header from "./Components/Layout/Header";
 import Home from "./Components/Page/Home";
 import { routerConfig } from "./Constants/routerSettings";
 import CssBaseline from "@mui/material/CssBaseline";
-import Reserve from "./Components/Page/Reserve/Reserve";
 import MaintainApp from "./Maintain/MaintainApp";
 
 const PageLayout = styled("div")({
@@ -64,8 +63,6 @@ function App() {
                                 />
                             );
                         })}
-
-                        <Route path="reserve" element={<Reserve />} />
                     </Route>
                     <Route path="/maintain/*" element={<MaintainApp />} />
                     <Route path="/404" element={<div>Page NotFound</div>} />
