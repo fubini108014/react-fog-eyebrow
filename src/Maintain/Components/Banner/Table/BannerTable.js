@@ -1,20 +1,12 @@
 import React from "react";
 import MaterialTable from "@material-table/core";
-import { MaterialTableConfig } from "./tableConfig";
-import TypeSelect from "../Select/TypeSelect";
-import AntSwitch from "../Switch/AntSwitch";
+import { MaterialTableConfig } from "../../Portfolio/Table/tableConfig";
+import AntSwitch from "../../Portfolio/Switch/AntSwitch";
 import ImageUploadField from "../../Field/ImageUploadField";
-import { renderImage } from "./portfolioHelper";
+import { renderImage } from "../../Portfolio/Table/portfolioHelper";
 const { localization, defaultOption } = MaterialTableConfig;
 
-const typeOptions = [
-    { text: "法式霧眉", value: "1" },
-    { text: "韓系霧眉", value: "2" },
-    { text: "霧加飄眉", value: "3" },
-    { text: "補色", value: "4" },
-];
-
-function PortfolioTable({
+function BannerTable({
     dataSouce = [],
     onDelete = () => {},
     onAdd = () => {},
@@ -23,31 +15,26 @@ function PortfolioTable({
 }) {
     const genColumns = () => [
         {
-            title: "標題",
-            field: "title",
-        },
-        {
-            title: "類別",
-            field: "category",
-            editComponent: function (props) {
+            title: "圖片",
+            field: "image",
+            editComponent: (props) => {
                 return (
-                    <TypeSelect
-                        options={typeOptions}
-                        defaultValue={props.value}
-                        onChange={(val) => {
+                    <ImageUploadField
+                        fieldName={`portfolio_image_files`}
+                        defaultFile={props.value}
+                        onChange={(fileInfo) => {
                             props.onRowDataChange({
                                 ...props.rowData,
-                                category: val,
+                                image: fileInfo.files,
                             });
                         }}
                     />
                 );
             },
-            render: function (rowData) {
-                return (
-                    typeOptions.find((item) => rowData.category === item.value)
-                        .text || ""
-                );
+            width: "20%",
+            cellStyle: { width: 230, maxWidth: 230 },
+            render: (rowData) => {
+                return renderImage(rowData.image);
             },
         },
         {
@@ -66,57 +53,11 @@ function PortfolioTable({
                     />
                 );
             },
-            //editable: "never",
-            //width: "5%",
-            //cellStyle: { width: 90 },
-
             render: (rowData) => (rowData.active ? "OPEN" : "CLOSE"),
         },
         {
-            title: "Before",
-            field: "before",
-            editComponent: (props) => {
-                return (
-                    <ImageUploadField
-                        fieldName={`portfolio_before_files`}
-                        defaultFile={props.value}
-                        onChange={(fileInfo) => {
-                            props.onRowDataChange({
-                                ...props.rowData,
-                                before: fileInfo.files,
-                            });
-                        }}
-                    />
-                );
-            },
-            width: "20%",
-            cellStyle: { width: 230, maxWidth: 230 },
-            render: (rowData) => {
-                return renderImage(rowData.before);
-            },
-        },
-        {
-            title: "After",
-            field: "after",
-            editComponent: (props) => {
-                return (
-                    <ImageUploadField
-                        fieldName={`portfolio_after_files`}
-                        defaultFile={props.value}
-                        onChange={(fileInfo) => {
-                            props.onRowDataChange({
-                                ...props.rowData,
-                                after: fileInfo.files,
-                            });
-                        }}
-                    />
-                );
-            },
-            width: "20%",
-            cellStyle: { width: 230, maxWidth: 230 },
-            render: (rowData) => {
-                return renderImage(rowData.after);
-            },
+            title: "連結",
+            field: "link",
         },
         {
             title: "順序",
@@ -168,4 +109,4 @@ function PortfolioTable({
     );
 }
 
-export default PortfolioTable;
+export default BannerTable;
