@@ -54,16 +54,27 @@ const CustomSwitch = styled(Switch)(({ theme }) => ({
     },
 }));
 
-function AntSwitch({ onChange = () => {} }) {
+function AntSwitch({
+    onChange = () => {},
+    defaultChecked = false,
+    textLF = "Close",
+    textRL = "Open",
+    className = "",
+}) {
     return (
-        <SwitchWrapper direction="row" spacing={1} alignItems="center">
-            <Typography>Close</Typography>
+        <SwitchWrapper
+            className={className}
+            direction="row"
+            spacing={1}
+            alignItems="center"
+        >
+            <Typography>{textLF}</Typography>
             <CustomSwitch
-                defaultChecked
+                defaultChecked={defaultChecked}
                 inputProps={{ "aria-label": "ant design" }}
                 onChange={onChange}
             />
-            <Typography>Open</Typography>
+            <Typography>{textRL}</Typography>
         </SwitchWrapper>
     );
 }

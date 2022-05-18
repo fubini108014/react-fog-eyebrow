@@ -83,10 +83,17 @@ const AboutWrapper = styled("div")(({ theme }) => ({
     },
 }));
 
-function QuillEditor({ editorRef = null, value, onChange, ReactQuillProps }) {
+function QuillEditor({
+    title = "簡述",
+    editorRef = null,
+    value,
+    onChange,
+    ReactQuillProps,
+    className = "",
+}) {
     return (
-        <AboutWrapper>
-            <div className="quillTitle">簡述</div>
+        <AboutWrapper className={className}>
+            <div className="quillTitle">{title}</div>
             {/*BUG : React 18 Strict Mode 會有兩個 toolbar 待解決*/}
             <ReactQuill
                 ref={editorRef}

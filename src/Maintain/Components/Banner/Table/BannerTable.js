@@ -71,14 +71,12 @@ function BannerTable({
     return (
         <div>
             <MaterialTable
-                //icons={DataTableIcon}
                 isLoading={isLoading}
                 title={""}
                 localization={localization}
                 style={{ margin: "5px" }}
                 columns={genColumns()}
                 data={dataSouce}
-                //actions={isManager ? managerAction : undefined}
                 options={{
                     ...defaultOption,
                     addRowPosition: "first",

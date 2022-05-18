@@ -9,6 +9,7 @@ export const customTheme = createTheme({
             color2: "#FEDFE1", // 粉
             color3: "#FFF4F5", // 淺粉
             color4: "#DF4F4F", // 深紅
+            color5: "#758F8E", // 深綠
         },
         secondary: {
             //次要色

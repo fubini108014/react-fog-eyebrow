@@ -38,4 +38,4 @@ export const MaterialTableConfig = {
     },
 };
 
-export const isoDateFormat = "YYYY-MM-DD";
+export const isoDateFormat = "yyyy-MM-dd";
