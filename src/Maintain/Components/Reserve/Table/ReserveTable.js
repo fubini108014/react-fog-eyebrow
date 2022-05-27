@@ -11,7 +11,7 @@ import { format } from "date-fns";
 
 const { localization, defaultOption } = MaterialTableConfig;
 
-function NewsTable({
+function ReserveTable({
     dataSouce = [],
     onDelete = () => {},
     onAdd = () => {},
@@ -20,41 +20,37 @@ function NewsTable({
 }) {
     const genColumns = () => [
         {
-            title: "標題",
-            field: "title",
+            title: "大項目",
+            field: "mainType",
         },
         {
-            title: "簡介",
-            field: "introduction",
+            title: "小項目",
+            field: "subType",
         },
         {
-            title: "狀態",
-            field: "active",
-            initialEditValue: true,
-            render: (rowData) => (rowData.active ? "OPEN" : "CLOSE"),
-        },
-        {
-            title: "上架日期",
-            field: "publishDate",
+            title: "預約日期",
+            field: "appointmentDate",
             type: "date",
             cellStyle: { minWidth: 160 },
             dateSetting: { format: isoDateFormat },
             render: (rowData) =>
-                format(new Date(rowData.publishDate), isoDateFormat),
+                format(new Date(rowData.appointmentDate), isoDateFormat),
         },
         {
-            title: "下架日期",
-            field: "offLineDate",
-            dateSetting: { format: isoDateFormat },
-            type: "date",
-            cellStyle: { minWidth: 160 },
-            render: (rowData) =>
-                format(new Date(rowData.offLineDate), isoDateFormat),
+            title: "預約時段",
+            field: "appointmentPeriod",
         },
         {
-            title: "是否置頂",
-            field: "isPinnedPost",
-            render: (rowData) => (rowData.isPinnedPost ? "Y" : "N"),
+            title: "姓名",
+            field: "name",
+        },
+        {
+            title: "連絡電話",
+            field: "phone",
+        },
+        {
+            title: "E-mail",
+            field: "mail",
         },
     ];
 
@@ -96,28 +92,9 @@ function NewsTable({
                     sorting: false,
                 }}
                 actions={getActions()}
-                /*editable={{
-                    onRowAdd: (newData) =>
-                        new Promise((resolve) => {
-                            onAdd(newData);
-                            resolve(0);
-                        }),
-                    onRowUpdate: (newData, oldData) =>
-                        new Promise((resolve, reject) => {
-                            onUpdate(newData);
-                            resolve(0);
-                        }),
-                    onRowDelete: (oldData) =>
-                        new Promise((resolve, reject) => {
-                            setTimeout(() => {
-                                onDelete(oldData.id);
-                                resolve(0);
-                            }, 100);
-                        }),
-                }}*/
             />
         </div>
     );
 }
 
-export default NewsTable;
+export default ReserveTable;

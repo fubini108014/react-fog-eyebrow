@@ -29,6 +29,7 @@ export default function TextInputField({
     defaultValue = "",
     placeholder = "",
     onChange = () => {},
+    textFieldProps = {},
 }) {
     return (
         <TextFieldBox>
@@ -40,6 +41,7 @@ export default function TextInputField({
                 placeholder={placeholder}
                 className="textField"
                 onChange={onChange}
+                {...textFieldProps}
             />
         </TextFieldBox>
     );
